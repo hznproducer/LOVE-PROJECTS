@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Playlist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <!-- Tela Inicial -->
+    <div id="start-screen">
+        <div class="start-content apple-glass">
+            <h2>Espero que goste...</h2>
+            <button id="start-btn" class="gradient-btn">Toque para abrir ❤️</button>
+        </div>
+    </div>
+
+
+    <!-- Fundo de Vídeo e Gradiente Romântico Animado -->
+    <div id="bg-container">
+        <video id="bg-video" loop muted playsinline></video>
+        <div class="overlay"></div>
+    </div>
+
+
+    <!-- Áudios -->
+    <audio id="audio1" src="musicas/Ayra Starr - Hot Body.mp3" preload="auto"></audio>
+    <audio id="audio2" src="musicas/Tyla - IS IT.mp3" preload="auto"></audio>
+    <audio id="audio3" src="musicas/Baby eu não quero outro alguém.mp3" preload="auto"></audio>
+
+
+    <!-- TELA 1: Menu das Músicas -->
+    <main id="main-screen" style="display: none;">
+        <h1 class="header-title">Selecione sua música</h1>
+        <div class="menu-container">
+            <!-- Música 1 -->
+            <div class="music-bar apple-glass" data-audio="audio1" data-video="videos/Ayra Starr - Hot Body.mp4"
+                data-audio-start="01:14" data-video-start="01:14"
+                style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('capas/hot2.jpg');">
+                <img src="capas/hot1.jpg" alt="Capa" class="music-thumb">
+                <div class="music-info">
+                    <h3>Ayra Starr - Hot Body</h3>
+                    <p>Sua música</p>
+                </div>
+            </div>
+
+
+            <!-- Música 2 -->
+            <div class="music-bar apple-glass" data-audio="audio2" data-video="videos/Tyla - IS IT.mp4"
+                data-audio-start="00:54" data-video-start="00:54"
+                style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('capas/it2.jpg');">
+                <img src="capas/it1.jpeg" alt="Capa" class="music-thumb">
+                <div class="music-info">
+                    <h3>Tyla - IS IT</h3>
+                    <p>Sua música</p>
+                </div>
+            </div>
+
+
+            <!-- Música 3 -->
+            <div class="music-bar apple-glass" data-audio="audio3"
+                data-video="videos/Baby eu não quero outro alguém.mp4" data-audio-start="00:11" data-video-start="00:11"
+                style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('capas/baby2.jpeg');">
+                <img src="capas/baby1.jpg" alt="Capa" class="music-thumb">
+                <div class="music-info">
+                    <h3>Baby eu não quero outro alguém</h3>
+                    <p>Minha música, pra vc ouvir</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- Notificação Estilo Apple/Spotify com Capa -->
+    <div id="spotify-notification" class="apple-glass notification-banner">
+        <img id="notif-thumb" src="" alt="Capa" class="notif-thumb">
+        <div class="notif-text">
+            <span class="notif-label">Música Selecionada</span>
+            <strong id="notif-song-title">Título da Música</strong>
+        </div>
+    </div>
+
+
+    <!-- Camada de Emojis Flutuantes (Celebração ao escolher a música) -->
+    <div id="emoji-burst-layer" aria-hidden="true"></div>
+
+
+    <!-- TELA 2: Surpresa -->
+    <section id="surprise-screen" style="display: none;">
+        <div class="content-scroll-container">
+            <!-- Botão Voltar -->
+            <button id="back-to-menu-btn" class="apple-glass gradient-btn">
+                ← Escolher outra música
+            </button>
+
+
+            <!-- Foto Central Flutuante -->
+            <div class="center-photo-container">
+                <img src="imagens/N71.jpeg" alt="Foto do Amor" class="round-photo-central">
+            </div>
+
+
+            <!-- PLAYER SPOTIFY PREMIUM -->
+            <div class="apple-glass spotify-player-card">
+                <div class="spotify-header-info">
+                    <img id="player-thumb" src="" alt="Capa" class="spotify-thumb">
+                    <div class="spotify-meta">
+                        <h4 id="player-title">Nome da Música</h4>
+                        <p>Obrigado pela preferência!</p>
+                    </div>
+                    <button class="spotify-heart-btn" id="spotify-heart" title="Curtir">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path
+                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                    </button>
+                </div>
+
+
+                <!-- Timeline Estilo Spotify Profissional com Barra Preenchida -->
+                <div class="spotify-timeline-container">
+                    <div class="progress-bar-wrapper">
+                        <input type="range" id="progress-bar" value="0" min="0" max="100" step="0.1">
+                    </div>
+                    <div class="spotify-time-labels">
+                        <span id="current-time">00:00</span>
+                        <span id="total-time">00:00</span>
+                    </div>
+                </div>
+
+
+                <!-- Controles do Player Estilo Spotify -->
+                <div class="spotify-controls">
+                    <button class="control-btn secondary-control" id="shuffle-btn" title="Aleatório">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                            <path
+                                d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z" />
+                        </svg>
+                    </button>
+                    <button class="control-btn" id="rewind-btn" title="Voltar 10s">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z" />
+                        </svg>
+                    </button>
+                    <button class="control-btn play-pause-btn" id="play-pause-btn" title="Play/Pause">
+                        <svg id="play-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor"
+                            style="display:none;">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        <svg id="pause-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                        </svg>
+                    </button>
+                    <button class="control-btn" id="forward-btn" title="Avançar 10s">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path d="M13 6v12l8.5-6L13 6zM4 18l8.5-6L4 6v12z" />
+                        </svg>
+                    </button>
+                    <button class="control-btn secondary-control" id="repeat-btn" title="Repetir">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                            <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Declaração de Amor com Scroll Blur Elegante -->
+            <div class="apple-glass declaration-card-large">
+                <div class="rose-animation bloom">🌹</div>
+                <h2>I LOVE YOU!</h2>
+                <p class="declaration-text">
+                    Cada passo ao seu lado é a confirmação diária de que o futuro guarda os nossos melhores capítulos.
+                    Você redesenhou a minha realidade com a sua luz, o seu carinho e essa cumplicidade única que agora
+                    desenha o nosso caminho. Eternizar momentos com você virou o meu plano mais bonito. Descobrir que
+                    posso entrelaçar os meus planos, os meus segredos e a minha vida com você é a certeza mais bonita
+                    que carrego no peito. Obrigado por ser o meu porto seguro, por cada conversa cúmplice e por dar esse
+                    sentido novo que transforma tudo em paz. Que o nosso amanhã seja tão eterno, leve e inseparável
+                    quanto o que sinto por nós. Eu te amo hoje, amanhã e para todo o sempre! ❤️✨
+                </p>
+                <a href="https://wa.me/+244928746459?text=Oi%20amor!%20Amei%20a%20surpresa%20linda%20que%20voc%C3%AA%20fez%20pra%20mim!%20%E2%9D%A4%EF%B8%8F"
+                    class="btn-whatsapp-apple gradient-whatsapp" target="_blank">Agradecer ao criador❤️</a>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
